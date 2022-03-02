@@ -10,7 +10,7 @@ function App() {
     const [allLocations, setAllLocations] = useState(null);
 
     // const [query, setQuery] = useState(""); for use with searchbar filter
-
+    // testing comment
     const handleNewLocation = (event) => {
         setNewLocation(event.target.value);
     };
