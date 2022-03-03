@@ -2,3 +2,33 @@ img {
     width: 200px;
     height: auto;
 }
+
+.cards {
+    width: 200px;
+    height: 300px;
+    border: 2px solid black;
+    /* aspect-ratio: 1; */
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    gap: 15px;
+    padding: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.mouseover {
+    cursor: pointer;
+}
