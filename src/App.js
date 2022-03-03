@@ -3,9 +3,11 @@ import axios from "axios";
 import "./App.css";
 import Add from "./components/Add";
 import Logs from "./components/Logs";
+import Detail from "./components/Detail";
 
 const App = () => {
     const [allLogs, setAllLogs] = useState(null);
+    const [selectedLog, setSelectedLog] = useState(null);
 
     const handleNewLogSubmit = (
         name,
@@ -33,6 +35,10 @@ const App = () => {
             });
     };
 
+    const handleLogSelect = (log_id) => {
+      setSelectedLog(log_id);
+    }
+
     useEffect(() => {
         axios
             .get("https://fast-bayou-48719.herokuapp.com/logs")
@@ -45,7 +51,8 @@ const App = () => {
         <div className="App">
             <h1>My Travel Experiences</h1>
             <Add handleNewLogSubmit={handleNewLogSubmit} />
-            {allLogs ? <Logs allLogs={allLogs} /> : null}
+            {selectedLog ? <Detail allLogs={allLogs} /> : null}
+            {allLogs ? <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} /> : null}
         </div>
     );
 };
