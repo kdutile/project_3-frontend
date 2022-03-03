@@ -11,7 +11,7 @@ const Add = (props) => {
   const [recommendation, setRecommendation] = useState(false);
 
 
-  const handleNewname = (event) => {
+  const handleNewName = (event) => {
       setName(event.target.value);
   };
   const handleNewLocation = (event) => {
