@@ -38,10 +38,11 @@ const Add = (props) => {
             image,
             recommendation
         );
+        document.getElementById("new_log").reset();
     };
 
     return (
-        <form onSubmit={handleFormSubmit}>
+        <form id="new_log" onSubmit={handleFormSubmit}>
             Name: <input type="text" onChange={handleNewName} />
             <br></br>
             Location: <input type="text" onChange={handleNewLocation} />

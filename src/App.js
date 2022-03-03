@@ -35,6 +35,46 @@ const App = () => {
             });
     };
 
+    const handleLogDelete = (log_id) => {
+        axios
+            .delete(`https://fast-bayou-48719.herokuapp.com/logs/${log_id}`)
+            .then((response) => {
+                axios
+                    .get("https://fast-bayou-48719.herokuapp.com/logs")
+                    .then((response) => {
+                        setAllLogs(response.data);
+                    });
+            });
+    };
+
+    const handleUpdateLog = (
+        name,
+        location,
+        description,
+        cost,
+        image,
+        recommendation,
+        id
+    ) => {
+        axios
+            .put(`https://fast-bayou-48719.herokuapp.com/logs/${id}`, {
+                name: name,
+                location: location,
+                description: description,
+                cost: cost,
+                image: image,
+                recommendation: recommendation,
+            })
+            .then((response) => {
+                setSelectedLog(response.data);
+                axios
+                    .get("https://fast-bayou-48719.herokuapp.com/logs")
+                    .then((response) => {
+                        setAllLogs(response.data);
+                    });
+            });
+    };
+
     const handleLogSelect = (log) => {
         setSelectedLog(log);
     };
@@ -51,7 +91,13 @@ const App = () => {
         <div className="App">
             <h1>My Travel Experiences</h1>
             <Add handleNewLogSubmit={handleNewLogSubmit} />
-            {selectedLog ? <Detail selectedLog={selectedLog} /> : null}
+            {selectedLog ? (
+                <Detail
+                    handleUpdateLog={handleUpdateLog}
+                    handleLogDelete={handleLogDelete}
+                    selectedLog={selectedLog}
+                />
+            ) : null}
             {allLogs ? (
                 <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} />
             ) : null}
