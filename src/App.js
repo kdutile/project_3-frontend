@@ -35,9 +35,9 @@ const App = () => {
             });
     };
 
-    const handleLogSelect = (log_id) => {
-      setSelectedLog(log_id);
-    }
+    const handleLogSelect = (log) => {
+        setSelectedLog(log);
+    };
 
     useEffect(() => {
         axios
@@ -51,8 +51,10 @@ const App = () => {
         <div className="App">
             <h1>My Travel Experiences</h1>
             <Add handleNewLogSubmit={handleNewLogSubmit} />
-            {selectedLog ? <Detail allLogs={allLogs} /> : null}
-            {allLogs ? <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} /> : null}
+            {selectedLog ? <Detail selectedLog={selectedLog} /> : null}
+            {allLogs ? (
+                <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} />
+            ) : null}
         </div>
     );
 };
