@@ -1,74 +1,41 @@
-import "./App.css";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
+import Add from './components/Add'
 
-function App() {
-    const [location, setNewLocation] = useState("");
-    const [cost, setNewCost] = useState(0);
-    const [image, setNewImage] = useState("");
-    const [willRecommend, setNewWillRecommend] = useState(false);
-    const [allLocations, setAllLocations] = useState(null);
+const App = () => {
+    const [allLogs, setAllLogs] = useState(null);
 
-    // const [query, setQuery] = useState(""); for use with searchbar filter
-    // testing comment
-    const handleNewLocation = (event) => {
-        setNewLocation(event.target.value);
-    };
-
-    const handleNewCost = (event) => {
-        setNewCost(event.target.value);
-    };
-
-    const handleNewImage = (event) => {
-        setNewImage(event.target.value);
-    };
-    const handleNewWillRecommend = (event) => {
-        setNewWillRecommend(event.target.checked);
-    };
-
-    const handleNewLocationFormSubmit = (event) => {
-        event.preventDefault(); //this takes off the default actionn that submitting the form does
-        // console.log(newDescription);
-        // console.log(newComplete);
+    const handleNewLogSubmit = (name, location, description, cost, image, recommendation) => {
         axios
-            .post("https://fast-bayou-48719.herokuapp.com/locations", {
-                location: location,
-                cost: cost,
-                image: image,
-                willRecommend: willRecommend
+            .post("https://fast-bayou-48719.herokuapp.com/logs", {
+              name: name,
+              location: location,
+              description: description,
+              cost: cost,
+              image: image,
+              recommendation: recommendation,
             })
             .then(() => {
                 axios
-                    .get("https://fast-bayou-48719.herokuapp.com/locations")
+                    .get("https://fast-bayou-48719.herokuapp.com/logs")
                     .then((response) => {
-                        setAllLocations(response.data);
+                        setAllLogs(response.data);
                     });
             });
     };
 
     useEffect(() => {
-        axios.get("https://fast-bayou-48719.herokuapp.com/locations").then((response) => {
-            setAllLocations(response.data);
+        axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+            setAllLogs(response.data);
         });
     }, []);
 
     return (
         <div className="App">
-            <h1>Test</h1>
-            {allLocations ? <p>Locations: {allLocations[0].location}</p> : null}
+            <h1>My Travel Experiences</h1>
+            <Add handleNewLogSubmit={handleNewLogSubmit}/>
 
-            <form onSubmit={handleNewLocationFormSubmit}>
-                Location: <input type="text" onChange={handleNewLocation} />
-                <br></br>
-                Cost: <input type="number" onChange={handleNewCost} />
-                <br></br>
-                Image Link <input type="text" onChange={handleNewImage} />
-                <br></br>
-                Do I recommend it?{" "}
-                <input type="checkbox" onChange={handleNewWillRecommend} />
-                <br></br>
-                <input type="submit"></input>
-            </form>
         </div>
     );
 }
