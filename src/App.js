@@ -4,10 +4,38 @@ import "./App.css";
 import Add from "./components/Add";
 import Logs from "./components/Logs";
 import Detail from "./components/Detail";
+import Users from "./components/Users";
 
 const App = () => {
     const [allLogs, setAllLogs] = useState(null);
     const [selectedLog, setSelectedLog] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [showSignUp, setShowSignUp] = useState(true);
+
+    const handleNewUserSubmit = (username, password) => {
+        axios
+            .post("https://fast-bayou-48719.herokuapp.com/users", {
+                username,
+                password,
+            })
+            .then((response) => {
+                if (response.data.username) {
+                    setCurrentUser(response.data);
+                    setShowSignUp(true);
+                } else {
+                    console.log(response.data);
+                    alert("That username is already taken. Please try again");
+                }
+            });
+    };
+
+    const toggleSignUp = () => {
+        setShowSignUp(false);
+    };
+
+    const clearUser = () => {
+        setCurrentUser(null);
+    };
 
     const handleNewLogSubmit = (
         name,
@@ -90,6 +118,28 @@ const App = () => {
     return (
         <div className="App">
             <h1>My Travel Experiences</h1>
+            <ul>
+                {!currentUser ? (
+                    <>
+                        <li>
+                            <button onClick={toggleSignUp}>Sign Up</button>
+                        </li>
+                        <li>
+                            <button>Sign In</button>
+                        </li>
+                    </>
+                ) : (
+                    <li>
+                        <button onClick={clearUser}>Sign Out</button>
+                    </li>
+                )}
+            </ul>
+
+            {currentUser ? <h2>Welcome {currentUser.username}</h2> : null}
+
+            {showSignUp ? null : (
+                <Users handleNewUserSubmit={handleNewUserSubmit} />
+            )}
             <Add handleNewLogSubmit={handleNewLogSubmit} />
             {selectedLog ? (
                 <Detail

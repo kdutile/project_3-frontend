@@ -46,7 +46,6 @@ const Detail = (props) => {
             props.selectedLog._id
         );
         setEditLog(false);
-        document.getElementById("update_log").reset();
     };
 
     const handleEdit = () => {
