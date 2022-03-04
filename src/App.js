@@ -42,7 +42,7 @@ const App = () => {
                     setShowSignIn(false);
                 } else {
                     console.log(response.data);
-                    alert("That username is already taken. Please try again");
+                    alert("Username and password do not match. Please try again.");
                 }
             });
     };
@@ -172,18 +172,18 @@ const App = () => {
 
             {showSignUp ? <Users handleNewUserSubmit={handleNewUserSubmit} /> : null}
             {showSignIn ? <Users handleUserSignIn={handleUserSignIn} showSignIn={showSignIn} /> : null}
-
-            <Add handleNewLogSubmit={handleNewLogSubmit} />
-            {selectedLog ? (
-                <Detail
-                    handleUpdateLog={handleUpdateLog}
-                    handleLogDelete={handleLogDelete}
-                    selectedLog={selectedLog}
-                />
-            ) : null}
-            {allLogs ? (
-                <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} />
-            ) : null}
+            {currentUser ? (<>            <Add handleNewLogSubmit={handleNewLogSubmit} />
+                        {selectedLog ? (
+                            <Detail
+                                handleUpdateLog={handleUpdateLog}
+                                handleLogDelete={handleLogDelete}
+                                selectedLog={selectedLog}
+                            />
+                        ) : null}
+                        {allLogs ? (
+                            <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} />
+                        ) : null}
+</>) : /*This is our landing page*/ null}
         </div>
     );
 };
