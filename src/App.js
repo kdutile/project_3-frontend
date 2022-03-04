@@ -10,7 +10,8 @@ const App = () => {
     const [allLogs, setAllLogs] = useState(null);
     const [selectedLog, setSelectedLog] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
-    const [showSignUp, setShowSignUp] = useState(true);
+    const [showSignUp, setShowSignUp] = useState(false);
+    const [showSignIn, setShowSignIn] = useState(false);
 
     const handleNewUserSubmit = (username, password) => {
         axios
@@ -21,7 +22,7 @@ const App = () => {
             .then((response) => {
                 if (response.data.username) {
                     setCurrentUser(response.data);
-                    setShowSignUp(true);
+                    setShowSignUp(false);
                 } else {
                     console.log(response.data);
                     alert("That username is already taken. Please try again");
@@ -29,8 +30,40 @@ const App = () => {
             });
     };
 
-    const toggleSignUp = () => {
+    const handleUserSignIn = (username, password) => {
+        axios
+            .put("https://fast-bayou-48719.herokuapp.com/users", {
+                username,
+                password,
+            })
+            .then((response) => {
+                if (response.data.username) {
+                    setCurrentUser(response.data);
+                    setShowSignIn(false);
+                } else {
+                    console.log(response.data);
+                    alert("That username is already taken. Please try again");
+                }
+            });
+    };
+
+    const toggleSignIn = () => {
+      if (showSignIn) {
+        setShowSignIn(false);
+      } else {
+        setShowSignIn(true);
         setShowSignUp(false);
+      }
+    };
+
+    const toggleSignUp = () => {
+      if (showSignUp) {
+        setShowSignUp(false);
+      } else {
+        setShowSignUp(true);
+        setShowSignIn(false);
+      }
+
     };
 
     const clearUser = () => {
@@ -125,7 +158,7 @@ const App = () => {
                             <button onClick={toggleSignUp}>Sign Up</button>
                         </li>
                         <li>
-                            <button>Sign In</button>
+                            <button onClick={toggleSignIn}>Sign In</button>
                         </li>
                     </>
                 ) : (
@@ -137,9 +170,9 @@ const App = () => {
 
             {currentUser ? <h2>Welcome {currentUser.username}</h2> : null}
 
-            {showSignUp ? null : (
-                <Users handleNewUserSubmit={handleNewUserSubmit} />
-            )}
+            {showSignUp ? <Users handleNewUserSubmit={handleNewUserSubmit} /> : null}
+            {showSignIn ? <Users handleUserSignIn={handleUserSignIn} showSignIn={showSignIn} /> : null}
+
             <Add handleNewLogSubmit={handleNewLogSubmit} />
             {selectedLog ? (
                 <Detail
