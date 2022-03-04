@@ -19,8 +19,23 @@ const Users = (props) => {
         document.getElementById("sign-up").reset();
     };
 
-    return (
-        <section className="SignUp">
+    const handleSignInSubmit = (event) => {
+        //this takes off the default action that submitting the form does
+        event.preventDefault();
+        props.handleUserSignIn(username, password);
+        document.getElementById("sign-in").reset();
+    };
+
+    return (props.showSignIn) ? (<section className="SignIn">
+            <h1>Sign In</h1>
+            <form id="sign-in" onSubmit={handleSignInSubmit}>
+                Username: <input type="text" onChange={handleUsername}></input>
+                Password:{" "}
+                <input type="password" onChange={handlePassword}></input>
+                <input type="submit"></input>
+            </form>
+        </section>)
+        : (<section className="SignUp">
             <h1>Create an Account</h1>
             <form id="sign-up" onSubmit={handleUserSubmit}>
                 Username: <input type="text" onChange={handleUsername}></input>
@@ -28,8 +43,7 @@ const Users = (props) => {
                 <input type="password" onChange={handlePassword}></input>
                 <input type="submit"></input>
             </form>
-        </section>
-    );
+        </section>)
 };
 
 export default Users;
