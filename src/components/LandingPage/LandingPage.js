@@ -5,7 +5,10 @@ const LandingPage = (props) => {
     return (
         <section>
             <div className="Banner">
-                <h1>Landing Page</h1>
+                <h1>
+                    KEEP TRACK OF WHERE YOU'VE BEEN SO YOU CAN PLAN WHERE TO GO
+                    NEXT
+                </h1>
             </div>
         </section>
     );
