@@ -1,0 +1,16 @@
+.Banner {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("https://allblogroll.com/wp-content/uploads/2016/10/Travel-Abroad.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 90%;
+    filter: brightness(70%);
+    border: 2px solid black;
+    height: 450px;
+}
+
+.ul {
+    color: red;
+}
