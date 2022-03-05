@@ -1,16 +1,45 @@
 .Banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     margin: 0;
+    margin-top: 20px;
     padding: 0;
     box-sizing: border-box;
     background-image: url("https://allblogroll.com/wp-content/uploads/2016/10/Travel-Abroad.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: 90%;
-    filter: brightness(70%);
-    border: 2px solid black;
+
+    /* border: 2px solid black; */
+    padding: 10px;
     height: 450px;
+}
+
+.Banner h1 {
+    font-size: 3.5vw;
+    color: white;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+
+    width: 21em;
+    padding: 10px;
+    margin: 0;
+}
+
+.Banner h2 {
+    font-size: 1.7em;
+    font-weight: 800;
+    background-color: black;
+    color: white;
 }
 
 .ul {
     color: red;
+}
+
+span {
+    text-decoration: underline;
 }
