@@ -245,7 +245,7 @@ const App = () => {
                     ) : null
                   }
                 </>
-              ) : <LandingPage />
+              ) : (showSignUp || showSignIn) ? null : <LandingPage />
             }
         </section>
       </div>
