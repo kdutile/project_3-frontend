@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./App.css";
+import LandingPage from "./components/LandingPage/LandingPage";
 import Add from "./components/Add";
 import Logs from "./components/Logs";
 import Detail from "./components/Detail";
 import Users from "./components/Users";
+import "./App.css";
 
 const App = () => {
     const [allLogs, setAllLogs] = useState(null);
@@ -42,28 +43,29 @@ const App = () => {
                     setShowSignIn(false);
                 } else {
                     console.log(response.data);
-                    alert("Username and password do not match. Please try again.");
+                    alert(
+                        "Username and password do not match. Please try again."
+                    );
                 }
             });
     };
 
     const toggleSignIn = () => {
-      if (showSignIn) {
-        setShowSignIn(false);
-      } else {
-        setShowSignIn(true);
-        setShowSignUp(false);
-      }
+        if (showSignIn) {
+            setShowSignIn(false);
+        } else {
+            setShowSignIn(true);
+            setShowSignUp(false);
+        }
     };
 
     const toggleSignUp = () => {
-      if (showSignUp) {
-        setShowSignUp(false);
-      } else {
-        setShowSignUp(true);
-        setShowSignIn(false);
-      }
-
+        if (showSignUp) {
+            setShowSignUp(false);
+        } else {
+            setShowSignUp(true);
+            setShowSignIn(false);
+        }
     };
 
     const clearUser = () => {
@@ -151,7 +153,8 @@ const App = () => {
     return (
         <div className="App">
             <h1>My Travel Experiences</h1>
-            <ul>
+
+            <ul className="ul">
                 {!currentUser ? (
                     <>
                         <li>
@@ -170,20 +173,36 @@ const App = () => {
 
             {currentUser ? <h2>Welcome {currentUser.username}</h2> : null}
 
-            {showSignUp ? <Users handleNewUserSubmit={handleNewUserSubmit} /> : null}
-            {showSignIn ? <Users handleUserSignIn={handleUserSignIn} showSignIn={showSignIn} /> : null}
-            {currentUser ? (<>            <Add handleNewLogSubmit={handleNewLogSubmit} />
-                        {selectedLog ? (
-                            <Detail
-                                handleUpdateLog={handleUpdateLog}
-                                handleLogDelete={handleLogDelete}
-                                selectedLog={selectedLog}
-                            />
-                        ) : null}
-                        {allLogs ? (
-                            <Logs allLogs={allLogs} handleLogSelect={handleLogSelect} />
-                        ) : null}
-</>) : /*This is our landing page*/ null}
+            {showSignUp ? (
+                <Users handleNewUserSubmit={handleNewUserSubmit} />
+            ) : null}
+            {showSignIn ? (
+                <Users
+                    handleUserSignIn={handleUserSignIn}
+                    showSignIn={showSignIn}
+                />
+            ) : null}
+            {currentUser ? (
+                <>
+                    {" "}
+                    <Add handleNewLogSubmit={handleNewLogSubmit} />
+                    {selectedLog ? (
+                        <Detail
+                            handleUpdateLog={handleUpdateLog}
+                            handleLogDelete={handleLogDelete}
+                            selectedLog={selectedLog}
+                        />
+                    ) : null}
+                    {allLogs ? (
+                        <Logs
+                            allLogs={allLogs}
+                            handleLogSelect={handleLogSelect}
+                        />
+                    ) : null}
+                </>
+            ) : (
+                /*This is our landing page*/ <LandingPage />
+            )}
         </div>
     );
 };
