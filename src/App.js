@@ -13,6 +13,7 @@ const App = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [showSignUp, setShowSignUp] = useState(false);
     const [showSignIn, setShowSignIn] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
 
     const handleNewUserSubmit = (username, password) => {
         axios
@@ -22,11 +23,17 @@ const App = () => {
             })
             .then((response) => {
                 if (response.data.username) {
-                    setCurrentUser(response.data);
-                    setShowSignUp(false);
+                  axios
+                    .get("https://fast-bayou-48719.herokuapp.com/logs")
+                    .then((response) => {
+                      setAllLogs(response.data);
+                      }
+                    );
+                  setCurrentUser(response.data);
+                  setShowSignUp(false);
                 } else {
-                    console.log(response.data);
-                    alert("That username is already taken. Please try again");
+                  console.log(response.data);
+                  alert("That username is already taken. Please try again");
                 }
             });
     };
@@ -39,8 +46,14 @@ const App = () => {
             })
             .then((response) => {
                 if (response.data.username) {
-                    setCurrentUser(response.data);
-                    setShowSignIn(false);
+                  axios
+                    .get("https://fast-bayou-48719.herokuapp.com/logs")
+                    .then((response) => {
+                      setAllLogs(response.data);
+                      }
+                    );
+                  setCurrentUser(response.data);
+                  setShowSignIn(false);
                 } else {
                     console.log(response.data);
                     alert(
@@ -68,8 +81,20 @@ const App = () => {
         }
     };
 
+    const toggleAdd = () => {
+        if (showAdd) {
+            setShowAdd(false);
+        } else {
+            setShowAdd(true);
+        }
+    };
+
     const clearUser = () => {
-        setCurrentUser(null);
+      setSelectedLog(null);
+      setCurrentUser(null);
+      setShowSignUp(false);
+      setShowSignIn(false);
+      setShowAdd(false);
     };
 
     const handleNewLogSubmit = (
@@ -94,6 +119,7 @@ const App = () => {
                     .get("https://fast-bayou-48719.herokuapp.com/logs")
                     .then((response) => {
                         setAllLogs(response.data);
+                        setShowAdd(false);
                     });
             });
     };
@@ -152,26 +178,41 @@ const App = () => {
 
     return (
         <div className="App">
-            <h1>My Travel Experiences</h1>
-
-            <ul className="ul">
+          <section className="appHeader">
+            <h1 className="title">My Travel Experiences</h1>
+            <nav>
+              <ul>
                 {!currentUser ? (
-                    <>
-                        <li>
-                            <button onClick={toggleSignUp}>Sign Up</button>
-                        </li>
-                        <li>
-                            <button onClick={toggleSignIn}>Sign In</button>
-                        </li>
-                    </>
-                ) : (
+                  <>
                     <li>
-                        <button onClick={clearUser}>Sign Out</button>
+                      <button onClick={toggleSignUp}>Sign Up</button>
                     </li>
+                    <li>
+                      <button onClick={toggleSignIn}>Sign In</button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    { showAdd ? (
+                      <li>
+                        <button onClick={toggleAdd}>Cancel Log</button>
+                      </li>
+                    ) : (
+                      <li>
+                        <button onClick={toggleAdd}>Add Log</button>
+                      </li>
+                    )
+                    }
+                    <li>
+                      <button onClick={clearUser}>Sign Out</button>
+                    </li>
+                  </>
                 )}
-            </ul>
-
-            {currentUser ? <h2>Welcome {currentUser.username}</h2> : null}
+              </ul>
+            </nav>
+          </section>
+          <section className="appBody">
+            {currentUser ? <h2 className="userGreeting">Welcome {currentUser.username}</h2> : null}
 
             {showSignUp ? (
                 <Users handleNewUserSubmit={handleNewUserSubmit} />
@@ -182,28 +223,32 @@ const App = () => {
                     showSignIn={showSignIn}
                 />
             ) : null}
-            {currentUser ? (
+            { currentUser ?
+              (
                 <>
-                    {" "}
-                    <Add handleNewLogSubmit={handleNewLogSubmit} />
-                    {selectedLog ? (
-                        <Detail
-                            handleUpdateLog={handleUpdateLog}
-                            handleLogDelete={handleLogDelete}
-                            selectedLog={selectedLog}
-                        />
-                    ) : null}
-                    {allLogs ? (
-                        <Logs
-                            allLogs={allLogs}
-                            handleLogSelect={handleLogSelect}
-                        />
-                    ) : null}
+                  { showAdd ? <Add handleNewLogSubmit={handleNewLogSubmit} /> : null }
+                  { selectedLog ?
+                    (
+                      <Detail
+                        handleUpdateLog={handleUpdateLog}
+                        handleLogDelete={handleLogDelete}
+                        selectedLog={selectedLog}
+                      />
+                    ) : null
+                  }
+                  { allLogs ?
+                    (
+                      <Logs
+                        allLogs={allLogs}
+                        handleLogSelect={handleLogSelect}
+                      />
+                    ) : null
+                  }
                 </>
-            ) : (
-                /*This is our landing page*/ <LandingPage />
-            )}
-        </div>
+              ) : <LandingPage />
+            }
+        </section>
+      </div>
     );
 };
 

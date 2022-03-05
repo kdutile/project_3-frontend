@@ -1,4 +1,30 @@
 .App {
+  display: flex;
+  flex-direction: column;
+}
+.appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  gap: 10px;
+}
+.userGreeting {
+  text-align: center;
+}
+nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/***********/
+/* Leftovers from Create React App */
+/***********/
+
+/* .App {
     text-align: center;
 }
 
@@ -35,8 +61,4 @@
     to {
         transform: rotate(360deg);
     }
-}
-
-ul {
-    color: green;
-}
+} */
