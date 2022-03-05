@@ -26,7 +26,7 @@ const Users = (props) => {
         document.getElementById("sign-in").reset();
     };
 
-    return (props.showSignIn) ? (<section className="SignIn">
+    return (props.showSignIn) ? (<section className="SignIn Banner">
             <h1>Sign In</h1>
             <form id="sign-in" onSubmit={handleSignInSubmit}>
                 Username: <input type="text" onChange={handleUsername}></input>
@@ -35,7 +35,7 @@ const Users = (props) => {
                 <input type="submit"></input>
             </form>
         </section>)
-        : (<section className="SignUp">
+        : (<section className="SignUp Banner">
             <h1>Create an Account</h1>
             <form id="sign-up" onSubmit={handleUserSubmit}>
                 Username: <input type="text" onChange={handleUsername}></input>
