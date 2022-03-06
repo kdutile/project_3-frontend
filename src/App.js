@@ -105,6 +105,7 @@ const App = () => {
         image,
         recommendation
     ) => {
+      console.log(currentUser.username);
         axios
             .post("https://fast-bayou-48719.herokuapp.com/logs", {
                 name: name,
@@ -113,6 +114,7 @@ const App = () => {
                 cost: cost,
                 image: image,
                 recommendation: recommendation,
+                user: currentUser.username
             })
             .then(() => {
                 axios
@@ -153,6 +155,7 @@ const App = () => {
                 cost: cost,
                 image: image,
                 recommendation: recommendation,
+                user: currentUser.username
             })
             .then((response) => {
                 setSelectedLog(response.data);
