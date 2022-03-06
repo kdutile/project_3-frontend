@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Logs.css";
 
 const Logs = (props) => {
@@ -8,7 +7,7 @@ const Logs = (props) => {
             <div className="cardContainer">
                 {props.allLogs.map((log) => {
                     return (
-                        <a
+                        <div
                             key={log._id}
                             className="mouseOver"
                             onClick={() => {
@@ -16,13 +15,13 @@ const Logs = (props) => {
                             }}
                         >
                             <section className="cards">
-                                <img src={log.image} alt=""></img>
-
-                                <div>
-                                    <p>Click for more info</p>
-                                </div>
+                                <img
+                                    className="imgFit"
+                                    src={log.image}
+                                    alt=""
+                                ></img>
                             </section>
-                        </a>
+                        </div>
                     );
                 })}
             </div>
