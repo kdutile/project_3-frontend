@@ -2,8 +2,8 @@ import "./Logs.css";
 
 const Logs = (props) => {
     return (
-        <section>
-            <h1>test</h1>
+        <section className="logsBackground">
+            {/* <h1>test</h1> */}
             <div className="cardContainer">
                 {props.allLogs.map((log) => {
                     return (
@@ -15,11 +15,13 @@ const Logs = (props) => {
                             }}
                         >
                             <section className="cards">
-                                <img
-                                    className="imgFit"
-                                    src={log.image}
-                                    alt=""
-                                ></img>
+                                <a href="#anchor">
+                                    <img
+                                        className="imgFit"
+                                        src={log.image}
+                                        alt=""
+                                    ></img>
+                                </a>
                             </section>
                         </div>
                     );
