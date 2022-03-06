@@ -42,22 +42,53 @@ const Add = (props) => {
     };
 
     return (
-        <form id="new_log" onSubmit={handleFormSubmit}>
-            Name: <input type="text" onChange={handleNewName} />
-            <br></br>
-            Location: <input type="text" onChange={handleNewLocation} />
-            <br></br>
-            Description: <input type="text" onChange={handleNewDescription} />
-            <br></br>
-            Cost: <input type="number" onChange={handleNewCost} />
-            <br></br>
-            Image Links: <input type="text" onChange={handleNewImage} />
-            <br></br>
-            Do I recommend it?{" "}
-            <input type="checkbox" onChange={handleNewRecommendation} />
-            <br></br>
-            <input type="submit"></input>
+      <section className="addLog block">
+        <form id="new_log" className="box" onSubmit={handleFormSubmit}>
+          <div class="field">
+            <label className="label">Name</label>
+            <div class="control">
+              <input className="input" type="text" onChange={handleNewName} />
+            </div>
+          </div>
+          <div class="field">
+            <label className="label">Location</label>
+            <div class="control">
+              <input className="input" type="text" onChange={handleNewLocation} />
+            </div>
+          </div>
+          <div class="field">
+            <label className="label">Description</label>
+            <div class="control">
+              <textarea className="textarea" onChange={handleNewDescription} />
+            </div>
+          </div>
+          <div class="field">
+            <label className="label">Cost (USD)</label>
+            <div class="control">
+              <input className="input" type="number" onChange={handleNewCost} />
+            </div>
+          </div>
+          <div class="field">
+            <label className="label">Image URL</label>
+            <div class="control">
+              <input className="input" type="url" onChange={handleNewImage} />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <label className="checkbox">
+                <input type="checkbox" onChange={handleNewRecommendation} />
+                <span className="checkbox-space">Do you recommend this experience?</span>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input className="button is-info" type="submit"></input>
+            </div>
+          </div>
         </form>
+      </section>
     );
 };
 

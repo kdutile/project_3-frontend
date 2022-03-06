@@ -29,19 +29,45 @@ const Users = (props) => {
     return (props.showSignIn) ? (<section className="SignIn Banner">
             <h1>Sign In</h1>
             <form id="sign-in" onSubmit={handleSignInSubmit}>
-                Username: <input type="text" onChange={handleUsername}></input>
-                Password:{" "}
-                <input type="password" onChange={handlePassword}></input>
-                <input type="submit"></input>
+              <div class="field">
+                <label className="label">Username</label>
+                <div class="control">
+                  <input className="input" type="text" onChange={handleUsername}></input>
+                </div>
+              </div>
+              <div class="field">
+                <label className="label">Password</label>
+                <div class="control">
+                  <input className="input" type="password" onChange={handlePassword}></input>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input className="button is-info" type="submit"></input>
+                </div>
+              </div>
             </form>
         </section>)
         : (<section className="SignUp Banner">
             <h1>Create an Account</h1>
             <form id="sign-up" onSubmit={handleUserSubmit}>
-                Username: <input type="text" onChange={handleUsername}></input>
-                Password:{" "}
-                <input type="password" onChange={handlePassword}></input>
-                <input type="submit"></input>
+            <div class="field">
+              <label className="label">Username</label>
+              <div class="control">
+                <input className="input" type="text" onChange={handleUsername}></input>
+              </div>
+            </div>
+            <div class="field">
+              <label className="label">Password</label>
+              <div class="control">
+                <input className="input" type="password" onChange={handlePassword}></input>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input className="button is-info" type="submit"></input>
+              </div>
+            </div>
             </form>
         </section>)
 };
