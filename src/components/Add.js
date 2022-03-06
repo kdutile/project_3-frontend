@@ -44,46 +44,46 @@ const Add = (props) => {
     return (
       <section className="addLog block">
         <form id="new_log" className="box" onSubmit={handleFormSubmit}>
-          <div class="field">
+          <div className="field">
             <label className="label">Name</label>
-            <div class="control">
+            <div className="control">
               <input className="input" type="text" onChange={handleNewName} />
             </div>
           </div>
-          <div class="field">
+          <div className="field">
             <label className="label">Location</label>
-            <div class="control">
+            <div className="control">
               <input className="input" type="text" onChange={handleNewLocation} />
             </div>
           </div>
-          <div class="field">
+          <div className="field">
             <label className="label">Description</label>
-            <div class="control">
+            <div className="control">
               <textarea className="textarea" onChange={handleNewDescription} />
             </div>
           </div>
-          <div class="field">
+          <div className="field">
             <label className="label">Cost (USD)</label>
-            <div class="control">
+            <div className="control">
               <input className="input" type="number" onChange={handleNewCost} />
             </div>
           </div>
-          <div class="field">
+          <div className="field">
             <label className="label">Image URL</label>
-            <div class="control">
+            <div className="control">
               <input className="input" type="url" onChange={handleNewImage} />
             </div>
           </div>
-          <div class="field">
-            <div class="control">
+          <div className="field">
+            <div className="control">
               <label className="checkbox">
                 <input type="checkbox" onChange={handleNewRecommendation} />
                 <span className="checkbox-space">Do you recommend this experience?</span>
               </label>
             </div>
           </div>
-          <div class="field">
-            <div class="control">
+          <div className="field">
+            <div className="control">
               <input className="button is-info" type="submit"></input>
             </div>
           </div>
