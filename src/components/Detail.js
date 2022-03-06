@@ -89,7 +89,7 @@ const Detail = (props) => {
             </form>
         </section>
     ) : (
-        <section className="log-details">
+        <section id="anchor" className="log-details">
             <h2>Travel Experience Details</h2>
             <ul>
                 <li>{props.selectedLog.name}</li>
