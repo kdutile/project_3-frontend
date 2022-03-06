@@ -18,9 +18,15 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-left:
 }
-
+.addLog {
+  padding: 0 10%;
+}
 /* Some Bulma overwrite stuff */
+.checkbox-space {
+  padding-left: 4px;
+}
 .title {
   margin-bottom: 0 !important;
   text-align: center;
