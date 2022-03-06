@@ -5,7 +5,7 @@ const Add = (props) => {
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
     const [cost, setCost] = useState(0);
-    const [image, setNewImage] = useState([]);
+    const [image, setNewImage] = useState("");
     const [recommendation, setRecommendation] = useState(false);
 
     const handleNewName = (event) => {
