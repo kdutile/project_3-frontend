@@ -69,49 +69,49 @@ const Detail = (props) => {
     return editLog ? (
         <section className="editLog block">
           <form id="update_log" className="box" onSubmit={handleFormSubmit}>
-            <div class="field">
+            <div className="field">
               <label className="label">Name</label>
-              <div class="control">
+              <div className="control">
                 <input className="input" type="text" onChange={handleNewName} value={name}/>
               </div>
             </div>
-            <div class="field">
+            <div className="field">
               <label className="label">Location</label>
-              <div class="control">
+              <div className="control">
                 <input className="input" type="text" onChange={handleNewLocation} value={location}/>
               </div>
             </div>
-            <div class="field">
+            <div className="field">
               <label className="label">Description</label>
-              <div class="control">
+              <div className="control">
                 <textarea className="textarea" onChange={handleNewDescription} value={description}/>
               </div>
             </div>
-            <div class="field">
+            <div className="field">
               <label className="label">Cost (USD)</label>
-              <div class="control">
+              <div className="control">
                 <input className="input" type="number" onChange={handleNewCost} value={cost}/>
               </div>
             </div>
-            <div class="field">
+            <div className="field">
               <label className="label">Image URL</label>
-              <div class="control">
+              <div className="control">
                 <input className="input" type="url" onChange={handleNewImage} value={image}/>
               </div>
             </div>
-            <div class="field">
-              <div class="control">
+            <div className="field">
+              <div className="control">
                 <label className="checkbox">
                   {recommendation ? <input type="checkbox" onChange={handleNewRecommendation} checked /> : <input type="checkbox" onChange={handleNewRecommendation} />}
                   <span className="checkbox-space">Do you recommend this experience?</span>
                 </label>
               </div>
             </div>
-            <div class="field is-grouped">
-              <div class="control">
+            <div className="field is-grouped">
+              <div className="control">
                 <input className="button is-info" type="submit"></input>
               </div>
-              <div class="control">
+              <div className="control">
                 <input type="button" className="button is-warning" value="Cancel" onClick={toggleEdit}></input>
               </div>
             </div>
@@ -125,8 +125,8 @@ const Detail = (props) => {
                 <img src={props.selectedLog.image} alt="Image"/>
               </figure>
             </div>
-            <div class="media-content">
-              <div class="content">
+            <div className="media-content">
+              <div className="content">
                 <h2>{props.selectedLog.name}</h2>
                 <p>{props.selectedLog.name}</p>
                 <p>{props.selectedLog.location}</p>
@@ -134,11 +134,11 @@ const Detail = (props) => {
                 <p>${props.selectedLog.cost}</p>
                 <p>{props.selectedLog.recommendation}</p>
               </div>
-              <div class="field is-grouped">
-                <div class="control">
+              <div className="field is-grouped">
+                <div className="control">
                   <button className="button is-success" onClick={editSelected}>EDIT</button>
                 </div>
-                <div class="control">
+                <div className="control">
                   <button className="button is-danger" onClick={() => {props.handleLogDelete(props.selectedLog._id);}}>DELETE</button>
                 </div>
               </div>
