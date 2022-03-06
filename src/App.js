@@ -179,32 +179,32 @@ const App = () => {
     return (
         <div className="App">
           <section className="appHeader">
-            <h1 className="title">My Travel Experiences</h1>
+            <h1 className="title is-2">My Travel Experiences</h1>
             <nav>
               <ul>
                 {!currentUser ? (
                   <>
                     <li>
-                      <button onClick={toggleSignUp}>Sign Up</button>
+                      <button className="button is-primary" onClick={toggleSignUp}>Sign Up</button>
                     </li>
                     <li>
-                      <button onClick={toggleSignIn}>Sign In</button>
+                      <button className="button is-primary is-outlined" onClick={toggleSignIn}>Sign In</button>
                     </li>
                   </>
                 ) : (
                   <>
                     { showAdd ? (
                       <li>
-                        <button onClick={toggleAdd}>Cancel Log</button>
+                        <button className="button is-warning" onClick={toggleAdd}>Cancel Log</button>
                       </li>
                     ) : (
                       <li>
-                        <button onClick={toggleAdd}>Add Log</button>
+                        <button className="button button is-success" onClick={toggleAdd}>Add Log</button>
                       </li>
                     )
                     }
                     <li>
-                      <button onClick={clearUser}>Sign Out</button>
+                      <button className="button is-danger is-outlined" onClick={clearUser}>Sign Out</button>
                     </li>
                   </>
                 )}
