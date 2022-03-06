@@ -20,7 +20,7 @@ nav ul {
   padding: 0;
   padding-left:
 }
-.addLog {
+.addLog, .editLog, .logDetails {
   padding: 0 10%;
 }
 /* Some Bulma overwrite stuff */
