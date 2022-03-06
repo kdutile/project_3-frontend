@@ -1,18 +1,18 @@
-img {
-    width: 200px;
-    height: auto;
+.imgFit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .cards {
-    width: 200px;
-    height: 300px;
+    width: 21em;
+    height: 15em;
     border: 2px solid black;
-    /* aspect-ratio: 1; */
 }
 
 .cardContainer {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     flex-wrap: wrap;
     border: 2px solid black;
     gap: 15px;
