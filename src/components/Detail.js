@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Detail = (props) => {
     const [editLog, setEditLog] = useState(false);
@@ -45,72 +45,105 @@ const Detail = (props) => {
             recommendation,
             props.selectedLog._id
         );
-        setEditLog(false);
+        toggleEdit();
     };
 
-    const handleEdit = () => {
-        setEditLog(true);
+    const toggleEdit = () => {
+        if (editLog) {
+          setEditLog(false);
+        } else {
+          setEditLog(true);
+        }
     };
+
+    const editSelected = () => {
+      setName(props.selectedLog.name);
+      setLocation(props.selectedLog.location);
+      setDescription(props.selectedLog.description);
+      setCost(props.selectedLog.cost);
+      setNewImage(props.selectedLog.image);
+      setRecommendation(props.selectedLog.recommendation);
+      toggleEdit();
+    }
 
     return editLog ? (
-        <section className="log-Edit">
-            <form id="update_log" onSubmit={handleFormSubmit}>
-                Name:{" "}
-                <input type="text" onChange={handleNewName} value={name} />
-                <br></br>
-                Location:{" "}
-                <input
-                    type="text"
-                    onChange={handleNewLocation}
-                    value={location}
-                />
-                <br></br>
-                Description:{" "}
-                <input
-                    type="text"
-                    onChange={handleNewDescription}
-                    value={description}
-                />
-                <br></br>
-                Cost:{" "}
-                <input type="number" onChange={handleNewCost} value={cost} />
-                <br></br>
-                Image Links:{" "}
-                <input type="text" onChange={handleNewImage} value={image} />
-                <br></br>
-                Do I recommend it?{" "}
-                <input
-                    type="checkbox"
-                    onChange={handleNewRecommendation}
-                    value={recommendation}
-                />
-                <br></br>
-                <input type="submit"></input>
-            </form>
+        <section className="editLog block">
+          <form id="update_log" className="box" onSubmit={handleFormSubmit}>
+            <div class="field">
+              <label className="label">Name</label>
+              <div class="control">
+                <input className="input" type="text" onChange={handleNewName} value={name}/>
+              </div>
+            </div>
+            <div class="field">
+              <label className="label">Location</label>
+              <div class="control">
+                <input className="input" type="text" onChange={handleNewLocation} value={location}/>
+              </div>
+            </div>
+            <div class="field">
+              <label className="label">Description</label>
+              <div class="control">
+                <textarea className="textarea" onChange={handleNewDescription} value={description}/>
+              </div>
+            </div>
+            <div class="field">
+              <label className="label">Cost (USD)</label>
+              <div class="control">
+                <input className="input" type="number" onChange={handleNewCost} value={cost}/>
+              </div>
+            </div>
+            <div class="field">
+              <label className="label">Image URL</label>
+              <div class="control">
+                <input className="input" type="url" onChange={handleNewImage} value={image}/>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label className="checkbox">
+                  {recommendation ? <input type="checkbox" onChange={handleNewRecommendation} checked /> : <input type="checkbox" onChange={handleNewRecommendation} />}
+                  <span className="checkbox-space">Do you recommend this experience?</span>
+                </label>
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <input className="button is-info" type="submit"></input>
+              </div>
+              <div class="control">
+                <input type="button" className="button is-warning" value="Cancel" onClick={toggleEdit}></input>
+              </div>
+            </div>
+          </form>
         </section>
     ) : (
-        <section id="anchor" className="log-details">
-            <h2>Travel Experience Details</h2>
-            <ul>
-                <li>{props.selectedLog.name}</li>
-                <li>{props.selectedLog.location}</li>
-                <li>{props.selectedLog.description}</li>
-                <li>${props.selectedLog.cost}</li>
-                <li>
-                    <img src={props.selectedLog.image} />
-                </li>
-                <li>{props.selectedLog.recommendation}</li>
-            </ul>
-
-            <button onClick={handleEdit}>EDIT</button>
-
-            <button
-                onClick={() => {
-                    props.handleLogDelete(props.selectedLog._id);
-                }}
-            >
-                DELETE
-            </button>
+        <section id="anchor" className="logDetails block">
+          <article className="media box">
+            <div className="media-left">
+              <figure className="image is-128x128">
+                <img src={props.selectedLog.image} alt="Image"/>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <h2>{props.selectedLog.name}</h2>
+                <p>{props.selectedLog.name}</p>
+                <p>{props.selectedLog.location}</p>
+                <p>{props.selectedLog.description}</p>
+                <p>${props.selectedLog.cost}</p>
+                <p>{props.selectedLog.recommendation}</p>
+              </div>
+              <div class="field is-grouped">
+                <div class="control">
+                  <button className="button is-success" onClick={editSelected}>EDIT</button>
+                </div>
+                <div class="control">
+                  <button className="button is-danger" onClick={() => {props.handleLogDelete(props.selectedLog._id);}}>DELETE</button>
+                </div>
+              </div>
+            </div>
+          </article>
         </section>
     );
 };
