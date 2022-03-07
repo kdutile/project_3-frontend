@@ -1,42 +1,45 @@
 .App {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .appHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
 }
 .userGreeting {
-  text-align: center;
+    text-align: center;
+    font-size: 4vw;
+    font-weight: 700;
 }
 nav ul {
-  display: flex;
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-left:
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.addLog, .editLog, .logDetails {
-  padding: 0 10%;
+
+.addLog,
+.editLog,
+.logDetails {
+    padding: 0 10%;
 }
 /* Some Bulma overwrite stuff */
 .checkbox-space {
-  padding-left: 4px;
+    padding-left: 4px;
 }
 .title {
-  margin-bottom: 0 !important;
-  text-align: center;
+    margin-bottom: 0 !important;
+    text-align: center;
 }
 
 @media screen and (max-width: 635px) {
-  .appHeader {
-    flex-direction: column;
-  }
-
+    .appHeader {
+        flex-direction: column;
+    }
 }
 
 /***********/
