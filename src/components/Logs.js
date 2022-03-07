@@ -4,20 +4,28 @@ import { useState } from "react";
 
 const Logs = (props) => {
 
+    // Hooks
     const [showAll, setShowAll] = useState(false);
+    // Filter all logs, only display logs where user value matches current username
     const [displayLogs, setDisplayLogs] = useState(props.allLogs.filter(log => props.currentUser.username === log.user));
 
-    const shownLogs = [];
-
+    // Log display toggle
     const showAllToggler = () => {
+      // If currently set to show all, toggle to show only user and only display logs where user value matches current username
       if (showAll) {
         setShowAll(false);
         setDisplayLogs(props.allLogs.filter(log => props.currentUser.username === log.user));
-      } else {
+      }
+      // If currently set to show only user logs, toggle to show all logs
+      else {
         setShowAll(true);
         setDisplayLogs(props.allLogs);
       }
     }
+
+    // If Show All selected, display Show All button selected and attach onClick to Only Mine
+    // Else display Only Mine selected and attach onClick to Show All
+    // Map logs to cards
 
     return (
         <section className="logsBackground">
