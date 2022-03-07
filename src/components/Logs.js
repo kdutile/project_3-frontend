@@ -1,11 +1,14 @@
 import "./Logs.css";
 
 const Logs = (props) => {
+
+    const userLogs = props.allLogs.filter(log => props.currentUser.username === log.user)
+
     return (
         <section className="logsBackground">
             {/* <h1>test</h1> */}
             <div className="cardContainer">
-                {props.allLogs.map((log) => {
+                {userLogs.map((log) => {
                     return (
                         <div
                             key={log._id}
