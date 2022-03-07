@@ -28,6 +28,27 @@ nav ul {
     padding: 0 10%;
 }
 /* Some Bulma overwrite stuff */
+
+.button.is-info {
+    background-color: #48c78e !important;
+}
+
+.media {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.media-left {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* .image img {
+    object-fit: contain;
+} */
+
 .checkbox-space {
     padding-left: 4px;
 }
