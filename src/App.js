@@ -8,6 +8,7 @@ import Users from "./components/Users";
 import "./App.css";
 
 const App = () => {
+    // Hooks
     const [allLogs, setAllLogs] = useState(null);
     const [selectedLog, setSelectedLog] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
@@ -15,6 +16,7 @@ const App = () => {
     const [showSignIn, setShowSignIn] = useState(false);
     const [showAdd, setShowAdd] = useState(false);
 
+    // Create new user (user component)
     const handleNewUserSubmit = (username, password) => {
         axios
             .post("https://fast-bayou-48719.herokuapp.com/users", {
@@ -38,6 +40,7 @@ const App = () => {
             });
     };
 
+    // Sign in user (user component)
     const handleUserSignIn = (username, password) => {
         axios
             .put("https://fast-bayou-48719.herokuapp.com/users", {
@@ -63,6 +66,7 @@ const App = () => {
             });
     };
 
+    // Toggle sign in button
     const toggleSignIn = () => {
         if (showSignIn) {
             setShowSignIn(false);
@@ -72,6 +76,7 @@ const App = () => {
         }
     };
 
+    // Toggle sign up button
     const toggleSignUp = () => {
         if (showSignUp) {
             setShowSignUp(false);
@@ -81,6 +86,7 @@ const App = () => {
         }
     };
 
+    // Toggle Add Log button
     const toggleAdd = () => {
         if (showAdd) {
             setShowAdd(false);
@@ -89,6 +95,7 @@ const App = () => {
         }
     };
 
+    // Clear current user state and set hooks to default
     const clearUser = () => {
       setSelectedLog(null);
       setCurrentUser(null);
@@ -97,6 +104,7 @@ const App = () => {
       setShowAdd(false);
     };
 
+    // Create new log, tied to specific user (logs component)
     const handleNewLogSubmit = (
         name,
         location,
@@ -129,6 +137,7 @@ const App = () => {
             });
     };
 
+    // Delete selected log, and clear display log view (details component)
     const handleLogDelete = (log_id) => {
         setSelectedLog(null);
         axios
@@ -142,6 +151,7 @@ const App = () => {
             });
     };
 
+    // Edit/update log (details component)
     const handleUpdateLog = (
         name,
         location,
@@ -151,6 +161,10 @@ const App = () => {
         recommendation,
         id
     ) => {
+        // default image if user doesn't add one
+        if (image === "") {
+          image = "https://www.publicdomainpictures.net/pictures/50000/nahled/silhouette-globe.jpg"
+        }
         axios
             .put(`https://fast-bayou-48719.herokuapp.com/logs/${id}`, {
                 name: name,
@@ -171,14 +185,17 @@ const App = () => {
             });
     };
 
+    // Set user log choice (logs component)
     const handleLogSelect = (log) => {
         setSelectedLog(log);
     };
 
+    // Clear user log choice (details component)
     const handleLogSelectClear = () => {
         setSelectedLog(null);
     };
 
+    // Get log data
     useEffect(() => {
         axios
             .get("https://fast-bayou-48719.herokuapp.com/logs")
@@ -186,6 +203,22 @@ const App = () => {
                 setAllLogs(response.data);
             });
     }, []);
+
+      // App container
+        // Header (nav bar)
+          // Title
+          // Nav bar
+            // If user NOT logged in, show Sign Up/In buttons
+            // Else show Add Log and Sign Out buttons (because user is signed in)
+              // Toggle logic between Add Log and Cancel Log
+        // Body
+          // If user logged in, display greeting
+          // If Sign Up selected, show users component with Sign Up form
+          // If Sign In selected, show users component with Sign In form (pass sign in prop)
+          // If user logged in, display logs (logs component)
+            // If Add Log selected, show add log form (add component)
+            // If user selects a log, show details of selected log (details component)
+          // Else display landing page
 
     return (
         <div className="App">

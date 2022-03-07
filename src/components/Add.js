@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Add = (props) => {
+    // Hooks
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
@@ -8,6 +9,7 @@ const Add = (props) => {
     const [image, setNewImage] = useState("");
     const [recommendation, setRecommendation] = useState(false);
 
+    // Form event handlers
     const handleNewName = (event) => {
         setName(event.target.value);
     };
@@ -27,6 +29,7 @@ const Add = (props) => {
         setRecommendation(event.target.checked);
     };
 
+    // Add new log submit, pass state up to App.js
     const handleFormSubmit = (event) => {
         //this takes off the default action that submitting the form does
         event.preventDefault();
@@ -40,6 +43,10 @@ const Add = (props) => {
         );
         document.getElementById("new_log").reset();
     };
+
+    // Add log render section
+      // Add log form
+        // Input for name, location, description, cost, image url, and recommendation
 
     return (
       <section className="addLog block">
