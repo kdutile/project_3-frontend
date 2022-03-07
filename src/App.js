@@ -237,6 +237,7 @@ const App = () => {
                   { selectedLog ?
                     (
                       <Detail
+                        currentUser={currentUser}
                         handleUpdateLog={handleUpdateLog}
                         handleLogDelete={handleLogDelete}
                         selectedLog={selectedLog}

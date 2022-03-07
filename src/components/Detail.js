@@ -137,14 +137,18 @@ const Detail = (props) => {
                 <p>{props.selectedLog.description}</p>
                 <p>${props.selectedLog.cost}</p>
                 <p>{props.selectedLog.recommendation}</p>
-              </div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-success" onClick={editSelected}>EDIT</button>
-                </div>
-                <div className="control">
-                  <button className="button is-danger" onClick={handleLogDelete}>DELETE</button>
-                </div>
+                { props.selectedLog.user === props.currentUser.username ? (
+                  <div className="field is-grouped">
+                    <div className="control">
+                      <button className="button is-success" onClick={editSelected}>EDIT</button>
+                    </div>
+                    <div className="control">
+                      <button className="button is-danger" onClick={handleLogDelete}>DELETE</button>
+                    </div>
+                  </div>
+                ) : (
+                  <p>Experience by {props.selectedLog.user}</p>
+                )}
               </div>
             </div>
           </article>
