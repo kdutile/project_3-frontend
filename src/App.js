@@ -114,7 +114,7 @@ const App = () => {
         // default image if user doesn't add one
         if (image === "") {
             image =
-                "https://cdn2.vectorstock.com/i/1000x1000/29/11/template-world-map-planet-silhouettes-continents-vector-15792911.jpg";
+                "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
         }
         axios
             .post("https://fast-bayou-48719.herokuapp.com/logs", {
@@ -163,7 +163,7 @@ const App = () => {
         // default image if user doesn't add one
         if (image === "") {
             image =
-                "https://www.publicdomainpictures.net/pictures/50000/nahled/silhouette-globe.jpg";
+                "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
         }
         axios
             .put(`https://fast-bayou-48719.herokuapp.com/logs/${id}`, {

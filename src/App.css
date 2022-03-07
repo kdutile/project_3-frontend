@@ -10,9 +10,11 @@
     gap: 10px;
 }
 .userGreeting {
-    text-align: center;
-    font-size: 4vw;
-    font-weight: 700;
+    text-align: right;
+    font-size: 30px;
+    font-weight: 600;
+    margin-right: 1vw;
+    padding-bottom: 5px;
 }
 nav ul {
     display: flex;
@@ -33,10 +35,27 @@ nav ul {
     background-color: #48c78e !important;
 }
 
+.block:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+
+.buttons:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+.section {
+    padding: 1.5rem 1.5rem !important;
+}
+
 .media {
     display: flex;
+    gap: 4px;
     flex-direction: column;
     margin: 20px;
+}
+
+figure.image {
+    max-width: 621px;
+    margin-bottom: 15px;
 }
 
 .media-left {
@@ -44,10 +63,6 @@ nav ul {
     justify-content: center;
     width: 100%;
 }
-
-/* .image img {
-    object-fit: contain;
-} */
 
 .checkbox-space {
     padding-left: 4px;
@@ -60,6 +75,10 @@ nav ul {
 @media screen and (max-width: 635px) {
     .appHeader {
         flex-direction: column;
+    }
+
+    .userGreeting {
+        text-align: center;
     }
 }
 

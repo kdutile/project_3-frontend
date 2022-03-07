@@ -88,7 +88,7 @@ const Detail = (props) => {
     // Else display mention to log owner and close button
 
     return editLog ? (
-        <section className="editLog block">
+        <section className="editBanner editLog block">
             <form id="update_log" className="box" onSubmit={handleFormSubmit}>
                 <div className="field">
                     <label className="label">Name</label>
@@ -184,17 +184,21 @@ const Detail = (props) => {
         <section id="anchor" className="detailsBanner logDetails block">
             <article className="media box">
                 <div className="media-left">
-                    <figure className="image is-128x128">
+                    <figure className="image ">
                         <img src={props.selectedLog.image} alt="Image" />
                     </figure>
                 </div>
                 <div className="media-content">
                     <div className="content">
                         <h2>{props.selectedLog.name}</h2>
-                        <p>{props.selectedLog.name}</p>
+                        <h4>Location:</h4>
                         <p>{props.selectedLog.location}</p>
+                        <h4>Description:</h4>
                         <p>{props.selectedLog.description}</p>
-                        <p>${props.selectedLog.cost}</p>
+                        <span>
+                            <strong>Cost: </strong>
+                        </span>
+                        <span>${props.selectedLog.cost}</span>
                         <p>{props.selectedLog.recommendation}</p>
                         {props.selectedLog.user ===
                         props.currentUser.username ? (
