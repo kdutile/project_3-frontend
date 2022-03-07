@@ -13,7 +13,7 @@
 
 .cards:hover {
     /* cursor: pointer; */
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 200ms;
 }
 
@@ -23,9 +23,7 @@
     flex-wrap: wrap;
     /* border: 2px solid black; */
     gap: 15px;
-    padding: 10px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 0px 10px 40px 10px;
 }
 
 .hide {
