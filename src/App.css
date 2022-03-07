@@ -1,42 +1,85 @@
 .App {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .appHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
 }
 .userGreeting {
-  text-align: center;
+    text-align: right;
+    font-size: 30px;
+    font-weight: 600;
+    margin-right: 1vw;
+    padding-bottom: 5px;
 }
 nav ul {
-  display: flex;
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-left:
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.addLog, .editLog, .logDetails {
-  padding: 0 10%;
+
+.addLog,
+.editLog,
+.logDetails {
+    padding: 0 10%;
 }
 /* Some Bulma overwrite stuff */
+
+.button.is-info {
+    background-color: #48c78e !important;
+}
+
+.block:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+
+.buttons:not(:last-child) {
+    margin-bottom: 0rem !important;
+}
+.section {
+    padding: 1.5rem 1.5rem !important;
+}
+
+.media {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    margin: 20px;
+}
+
+figure.image {
+    max-width: 621px;
+    margin-bottom: 15px;
+}
+
+.media-left {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .checkbox-space {
-  padding-left: 4px;
+    padding-left: 4px;
 }
 .title {
-  margin-bottom: 0 !important;
-  text-align: center;
+    margin-bottom: 0 !important;
+    text-align: center;
 }
 
 @media screen and (max-width: 635px) {
-  .appHeader {
-    flex-direction: column;
-  }
+    .appHeader {
+        flex-direction: column;
+    }
 
+    .userGreeting {
+        text-align: center;
+    }
 }
 
 /***********/
