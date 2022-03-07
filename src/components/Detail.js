@@ -66,6 +66,10 @@ const Detail = (props) => {
       toggleEdit();
     }
 
+    const handleLogDelete = (event) => {
+      props.handleLogDelete(props.selectedLog._id);
+    }
+
     return editLog ? (
         <section className="editLog block">
           <form id="update_log" className="box" onSubmit={handleFormSubmit}>
@@ -139,7 +143,7 @@ const Detail = (props) => {
                   <button className="button is-success" onClick={editSelected}>EDIT</button>
                 </div>
                 <div className="control">
-                  <button className="button is-danger" onClick={() => {props.handleLogDelete(props.selectedLog._id);}}>DELETE</button>
+                  <button className="button is-danger" onClick={handleLogDelete}>DELETE</button>
                 </div>
               </div>
             </div>

@@ -106,6 +106,10 @@ const App = () => {
         recommendation
     ) => {
       console.log(currentUser.username);
+        // default image if user doesn't add one
+        if (image === "") {
+          image = "https://www.publicdomainpictures.net/pictures/50000/nahled/silhouette-globe.jpg"
+        }
         axios
             .post("https://fast-bayou-48719.herokuapp.com/logs", {
                 name: name,
@@ -127,6 +131,7 @@ const App = () => {
     };
 
     const handleLogDelete = (log_id) => {
+        setSelectedLog(null);
         axios
             .delete(`https://fast-bayou-48719.herokuapp.com/logs/${log_id}`)
             .then((response) => {
