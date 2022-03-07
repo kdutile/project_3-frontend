@@ -175,6 +175,10 @@ const App = () => {
         setSelectedLog(log);
     };
 
+    const handleLogSelectClear = () => {
+        setSelectedLog(null);
+    };
+
     useEffect(() => {
         axios
             .get("https://fast-bayou-48719.herokuapp.com/logs")
@@ -238,6 +242,7 @@ const App = () => {
                     (
                       <Detail
                         currentUser={currentUser}
+                        handleLogSelectClear={handleLogSelectClear}
                         handleUpdateLog={handleUpdateLog}
                         handleLogDelete={handleLogDelete}
                         selectedLog={selectedLog}

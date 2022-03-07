@@ -48,6 +48,10 @@ const Detail = (props) => {
         toggleEdit();
     };
 
+    const closeSelected = () => {
+      props.handleLogSelectClear();
+    }
+
     const toggleEdit = () => {
         if (editLog) {
           setEditLog(false);
@@ -140,6 +144,9 @@ const Detail = (props) => {
                 { props.selectedLog.user === props.currentUser.username ? (
                   <div className="field is-grouped">
                     <div className="control">
+                      <button className="button" onClick={closeSelected}>Close</button>
+                    </div>
+                    <div className="control">
                       <button className="button is-success" onClick={editSelected}>EDIT</button>
                     </div>
                     <div className="control">
@@ -147,7 +154,14 @@ const Detail = (props) => {
                     </div>
                   </div>
                 ) : (
-                  <p>Experience by {props.selectedLog.user}</p>
+                  <>
+                    <p>Experience by {props.selectedLog.user}</p>
+                    <div className="field is-grouped">
+                      <div className="control">
+                        <button className="button" onClick={closeSelected}>Close</button>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
