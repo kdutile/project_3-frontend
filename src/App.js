@@ -105,7 +105,6 @@ const App = () => {
         image,
         recommendation
     ) => {
-      console.log(currentUser.username);
         // default image if user doesn't add one
         if (image === "") {
           image = "https://www.publicdomainpictures.net/pictures/50000/nahled/silhouette-globe.jpg"
@@ -248,6 +247,7 @@ const App = () => {
                     (
                       <Logs
                         allLogs={allLogs}
+                        currentUser={currentUser}
                         handleLogSelect={handleLogSelect}
                       />
                     ) : null
