@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 const Detail = (props) => {
+    // Hooks
     const [editLog, setEditLog] = useState(false);
-
     const [name, setName] = useState(props.selectedLog.name);
     const [location, setLocation] = useState(props.selectedLog.location);
     const [description, setDescription] = useState(
@@ -14,6 +14,7 @@ const Detail = (props) => {
         props.selectedLog.recommendation
     );
 
+    // Handle form events
     const handleNewName = (event) => {
         setName(event.target.value);
     };
@@ -33,6 +34,7 @@ const Detail = (props) => {
         setRecommendation(event.target.checked);
     };
 
+    // Handle edit form submit, pass state up to App.js
     const handleFormSubmit = (event) => {
         //this takes off the default action that submitting the form does
         event.preventDefault();
@@ -48,10 +50,12 @@ const Detail = (props) => {
         toggleEdit();
     };
 
+    // Clear log selected state so display window closes, pass state up to App.js
     const closeSelected = () => {
       props.handleLogSelectClear();
     }
 
+    // Toggle edit view
     const toggleEdit = () => {
         if (editLog) {
           setEditLog(false);
@@ -60,6 +64,7 @@ const Detail = (props) => {
         }
     };
 
+    // Upon Edit button select, update states and toggle edit view
     const editSelected = () => {
       setName(props.selectedLog.name);
       setLocation(props.selectedLog.location);
@@ -70,9 +75,18 @@ const Detail = (props) => {
       toggleEdit();
     }
 
+    // Handle log delete, pass state to App.js
     const handleLogDelete = (event) => {
       props.handleLogDelete(props.selectedLog._id);
     }
+
+    // If Edit Log selected, display log form
+      // Loads current states as values
+      // If checkbox display
+    // Else display selected log
+      // If current user is log owner, then display Edit/Delete buttons
+      // Else display mention to log owner and close button
+
 
     return editLog ? (
         <section className="editLog block">
