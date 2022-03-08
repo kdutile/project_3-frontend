@@ -101,6 +101,7 @@ const Detail = (props) => {
                         />
                     </div>
                 </div>
+
                 <div className="field">
                     <label className="label">Location</label>
                     <div className="control">
@@ -112,6 +113,7 @@ const Detail = (props) => {
                         />
                     </div>
                 </div>
+
                 <div className="field">
                     <label className="label">Description</label>
                     <div className="control">
@@ -122,6 +124,7 @@ const Detail = (props) => {
                         />
                     </div>
                 </div>
+
                 <div className="field">
                     <label className="label">Cost (USD)</label>
                     <div className="control">
@@ -133,6 +136,7 @@ const Detail = (props) => {
                         />
                     </div>
                 </div>
+
                 <div className="field">
                     <label className="label">Image URL</label>
                     <div className="control">
@@ -144,6 +148,7 @@ const Detail = (props) => {
                         />
                     </div>
                 </div>
+
                 <div className="field">
                     <div className="control">
                         <label className="checkbox">
@@ -165,6 +170,7 @@ const Detail = (props) => {
                         </label>
                     </div>
                 </div>
+
                 <div className="field is-grouped">
                     <div className="control">
                         <input className="button is-info" type="submit"></input>
@@ -188,6 +194,7 @@ const Detail = (props) => {
                         <img src={props.selectedLog.image} alt="Image" />
                     </figure>
                 </div>
+
                 <div className="media-content">
                     <div className="content">
                         <h2>{props.selectedLog.name}</h2>
@@ -200,6 +207,7 @@ const Detail = (props) => {
                         </span>
                         <span>${props.selectedLog.cost}</span>
                         <p>{props.selectedLog.recommendation}</p>
+
                         {props.selectedLog.user ===
                         props.currentUser.username ? (
                             <div className="field is-grouped">
