@@ -25,11 +25,9 @@ const App = () => {
             })
             .then((response) => {
                 if (response.data.username) {
-                    axios
-                        .get("https://fast-bayou-48719.herokuapp.com/logs")
-                        .then((response) => {
-                            setAllLogs(response.data);
-                        });
+                    axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+                        setAllLogs(response.data);
+                    });
                     setCurrentUser(response.data);
                     setShowSignUp(false);
                 } else {
@@ -48,18 +46,14 @@ const App = () => {
             })
             .then((response) => {
                 if (response.data.username) {
-                    axios
-                        .get("https://fast-bayou-48719.herokuapp.com/logs")
-                        .then((response) => {
-                            setAllLogs(response.data);
-                        });
+                    axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+                        setAllLogs(response.data);
+                    });
                     setCurrentUser(response.data);
                     setShowSignIn(false);
                 } else {
                     console.log(response.data);
-                    alert(
-                        "Username and password do not match. Please try again."
-                    );
+                    alert("Username and password do not match. Please try again.");
                 }
             });
     };
@@ -103,18 +97,10 @@ const App = () => {
     };
 
     // Create new log, tied to specific user (logs component)
-    const handleNewLogSubmit = (
-        name,
-        location,
-        description,
-        cost,
-        image,
-        recommendation
-    ) => {
+    const handleNewLogSubmit = (name, location, description, cost, image, recommendation) => {
         // default image if user doesn't add one
         if (image === "") {
-            image =
-                "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
+            image = "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
         }
         axios
             .post("https://fast-bayou-48719.herokuapp.com/logs", {
@@ -127,43 +113,28 @@ const App = () => {
                 user: currentUser.username,
             })
             .then(() => {
-                axios
-                    .get("https://fast-bayou-48719.herokuapp.com/logs")
-                    .then((response) => {
-                        setAllLogs(response.data);
-                        setShowAdd(false);
-                    });
+                axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+                    setAllLogs(response.data);
+                    setShowAdd(false);
+                });
             });
     };
 
     // Delete selected log, and clear display log view (details component)
     const handleLogDelete = (log_id) => {
         setSelectedLog(null);
-        axios
-            .delete(`https://fast-bayou-48719.herokuapp.com/logs/${log_id}`)
-            .then((response) => {
-                axios
-                    .get("https://fast-bayou-48719.herokuapp.com/logs")
-                    .then((response) => {
-                        setAllLogs(response.data);
-                    });
+        axios.delete(`https://fast-bayou-48719.herokuapp.com/logs/${log_id}`).then((response) => {
+            axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+                setAllLogs(response.data);
             });
+        });
     };
 
     // Edit/update log (details component)
-    const handleUpdateLog = (
-        name,
-        location,
-        description,
-        cost,
-        image,
-        recommendation,
-        id
-    ) => {
+    const handleUpdateLog = (name, location, description, cost, image, recommendation, id) => {
         // default image if user doesn't add one
         if (image === "") {
-            image =
-                "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
+            image = "https://t3.ftcdn.net/jpg/00/87/31/62/240_F_87316296_6Br70nripvKY7qgKN4LPVkGJRs0Kiqgf.jpg";
         }
         axios
             .put(`https://fast-bayou-48719.herokuapp.com/logs/${id}`, {
@@ -177,11 +148,9 @@ const App = () => {
             })
             .then((response) => {
                 setSelectedLog(response.data);
-                axios
-                    .get("https://fast-bayou-48719.herokuapp.com/logs")
-                    .then((response) => {
-                        setAllLogs(response.data);
-                    });
+                axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+                    setAllLogs(response.data);
+                });
             });
     };
 
@@ -197,12 +166,10 @@ const App = () => {
 
     // Get log data
     useEffect(() => {
-        axios
-            .get("https://fast-bayou-48719.herokuapp.com/logs")
-            .then((response) => {
-                setAllLogs(response.data);
-            });
-    }, []);
+        axios.get("https://fast-bayou-48719.herokuapp.com/logs").then((response) => {
+            setAllLogs(response.data);
+        });
+    });
 
     // App container
     // Header (nav bar)
@@ -229,18 +196,12 @@ const App = () => {
                         {!currentUser ? (
                             <>
                                 <li>
-                                    <button
-                                        className="button is-primary"
-                                        onClick={toggleSignUp}
-                                    >
+                                    <button className="button is-primary" onClick={toggleSignUp}>
                                         Sign Up
                                     </button>
                                 </li>
                                 <li>
-                                    <button
-                                        className="button is-primary is-outlined"
-                                        onClick={toggleSignIn}
-                                    >
+                                    <button className="button is-primary is-outlined" onClick={toggleSignIn}>
                                         Sign In
                                     </button>
                                 </li>
@@ -249,28 +210,19 @@ const App = () => {
                             <>
                                 {showAdd ? (
                                     <li>
-                                        <button
-                                            className="button is-warning"
-                                            onClick={toggleAdd}
-                                        >
+                                        <button className="button is-warning" onClick={toggleAdd}>
                                             Cancel Log
                                         </button>
                                     </li>
                                 ) : (
                                     <li>
-                                        <button
-                                            className="button button is-success"
-                                            onClick={toggleAdd}
-                                        >
+                                        <button className="button button is-success" onClick={toggleAdd}>
                                             Add Log
                                         </button>
                                     </li>
                                 )}
                                 <li>
-                                    <button
-                                        className="button is-danger is-outlined"
-                                        onClick={clearUser}
-                                    >
+                                    <button className="button is-danger is-outlined" onClick={clearUser}>
                                         Sign Out
                                     </button>
                                 </li>
@@ -280,42 +232,15 @@ const App = () => {
                 </nav>
             </section>
             <section className="appBody">
-                {currentUser ? (
-                    <h2 className="userGreeting">
-                        Welcome {currentUser.username}
-                    </h2>
-                ) : null}
+                {currentUser ? <h2 className="userGreeting">Welcome {currentUser.username}</h2> : null}
 
-                {showSignUp ? (
-                    <Users handleNewUserSubmit={handleNewUserSubmit} />
-                ) : null}
-                {showSignIn ? (
-                    <Users
-                        handleUserSignIn={handleUserSignIn}
-                        showSignIn={showSignIn}
-                    />
-                ) : null}
+                {showSignUp ? <Users handleNewUserSubmit={handleNewUserSubmit} /> : null}
+                {showSignIn ? <Users handleUserSignIn={handleUserSignIn} showSignIn={showSignIn} /> : null}
                 {currentUser ? (
                     <>
-                        {showAdd ? (
-                            <Add handleNewLogSubmit={handleNewLogSubmit} />
-                        ) : null}
-                        {selectedLog ? (
-                            <Detail
-                                currentUser={currentUser}
-                                handleLogSelectClear={handleLogSelectClear}
-                                handleUpdateLog={handleUpdateLog}
-                                handleLogDelete={handleLogDelete}
-                                selectedLog={selectedLog}
-                            />
-                        ) : null}
-                        {allLogs ? (
-                            <Logs
-                                allLogs={allLogs}
-                                currentUser={currentUser}
-                                handleLogSelect={handleLogSelect}
-                            />
-                        ) : null}
+                        {showAdd ? <Add handleNewLogSubmit={handleNewLogSubmit} /> : null}
+                        {selectedLog ? <Detail currentUser={currentUser} handleLogSelectClear={handleLogSelectClear} handleUpdateLog={handleUpdateLog} handleLogDelete={handleLogDelete} selectedLog={selectedLog} /> : null}
+                        {allLogs ? <Logs allLogs={allLogs} currentUser={currentUser} handleLogSelect={handleLogSelect} /> : null}
                     </>
                 ) : showSignUp || showSignIn ? null : (
                     <LandingPage />
